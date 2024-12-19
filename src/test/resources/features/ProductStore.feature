@@ -17,5 +17,5 @@ Característica: Login
       | user                         | password     | categoria | subcategoria | cantidad |
       | "joelquicaliquin7@gmail.com" | "*NttData7*" | "Clothes" | "Men"        | 2        |
       | "incorrecto@correo.com"       | "wrongpass"  | "Clothes" | "Men"        |  2       |
-      
+
 
