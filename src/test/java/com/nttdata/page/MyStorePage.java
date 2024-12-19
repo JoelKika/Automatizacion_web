@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class MyStorePage {
 
     public static By loginLink = By.xpath("//*[@id=\"_desktop_user_info\"]/div/a");
-    public static By errorLogin = By.xpath("//*[@id=\"content\"]/section/div/ul/li");
+    public static By userLoggedIn = By.xpath("//*[@id=\"_desktop_user_info\"]/div/a[2]/span");
 
     public static By usuario = By.xpath("//*[@id=\"field-email\"]");
     public static By clave = By.xpath("//*[@id=\"field-password\"]");;

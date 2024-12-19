@@ -1,6 +1,7 @@
 package com.nttdata.steps;
 
 import com.nttdata.page.MyStorePage;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,14 +32,24 @@ public class StoreSteps {
 
     public void login() {
         this.driver.findElement(MyStorePage.BtnIniciar).click();
-
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement userLoggedIn = wait.until(ExpectedConditions.visibilityOfElementLocated(MyStorePage.userLoggedIn));
+            if (userLoggedIn.isDisplayed()) {
+                System.out.println("Inicio de sesión exitoso: " + userLoggedIn.getText());
+            } else {
+                throw new AssertionError("No se pudo verificar el inicio de sesión exitoso.");
+            }
+        } catch (TimeoutException e) {
+            throw new AssertionError("Inicio de sesión fallido");
+        }
 
     }
 
     public void navegoCategoria(String categoria, String subcategoria) {
-
         driver.findElement(MyStorePage.getCategoryLocator(categoria)).click();
         driver.findElement(MyStorePage.getSubCategoryLocator(subcategoria)).click();
+
     }
 
     public void agregarProductoCarrito(int cantidad) {
